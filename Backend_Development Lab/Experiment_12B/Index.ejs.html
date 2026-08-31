@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+    <style>
+        /* Dynamic Theme Variables reading configuration keys pushed from Node server scripts */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; padding: 40px; 
+            background-color: <%= activeTheme === 'dark' ? '#1e293b' : '#f8f9fa' %>; 
+            color: <%= activeTheme === 'dark' ? '#f1f5f9' : '#333' %>; 
+            transition: background 0.3s, color 0.3s;
+        }
+        .container { max-width: 650px; margin: 0 auto; background: <%= activeTheme === 'dark' ? '#334155' : 'white' %>; padding: 35px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .block { background: <%= activeTheme === 'dark' ? '#475569' : '#f1f5f9' %>; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #0284c7; }
+        .btn { background: #0284c7; color: white; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-weight: bold; text-decoration: none; display: inline-block; }
+        .btn-danger { background: #dc2626; }
+        input[type="text"], select { padding: 10px; width: 65%; border-radius: 6px; border: 1px solid #cbd5e1; margin-right: 10px; }
+        h1, h3 { margin-top: 0; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Experiment 12B: User State Management</h1>
+        <p><strong>Core Concept Checklist:</strong> Because HTTP is stateless, we use Cookies (browser-side) and Sessions (server-side) to remember client states.</p>
+        
+        <!-- Module 1: Session Variable Counts -->
+        <div class="block">
+            <h3>📊 Server-Side Session View Counter</h3>
+            <p>You have refreshed or loaded this exact page <strong><%= sessionViews %> times</strong> during this active navigation session container.</p>
+        </div>
+
+        <!-- Module 2: User Login Session Registration States -->
+        <div class="block">
+            <h3>👤 User Profile Session Authentication</h3>
+            <% if (username) { %>
+                <p>Authorized access token detected! Welcome back, <strong><%= username %></strong>.</p>
+                <a href="/logout" class="btn btn-danger">Tear Down Session (Logout)</a>
+            <% } else { %>
+                <p>Status: <em>Guest Visitor (No active server session)</em></p>
+                <form action="/login" method="POST">
+                    <input type="text" name="loginUser" placeholder="Enter custom name tag..." required>
+                    <button type="submit" class="btn">Establish Server Session</button>
+                </form>
+            <% } %>
+        </div>
+
+        <!-- Module 3: Client Cookie Properties Injection -->
+        <div class="block">
+            <h3>🎨 Client-Side Browser Cookie Tracking</h3>
+            <p>Active cookie layout saved on your system hard drive: <strong><%= activeTheme.toUpperCase() %> MODE</strong></p>
+            <form action="/set-theme" method="POST">
+                <select name="themeChoice">
+                    <option value="light" <%= activeTheme === 'light' ? 'selected' : '' %>>Standard Bright Theme Profile</option>
+                    <option value="dark" <%= activeTheme === 'dark' ? 'selected' : '' %>>Midnight Dark Theme Profile</option>
+                </select>
+                <button type="submit" class="btn">Deploy Cookie Payload</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "experiment-12b-sessions",
+  "version": "1.0.0",
+  "description": "Experiment 12B: State management using Cookies and Sessions in Node.js",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "ejs": "^3.1.10"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
