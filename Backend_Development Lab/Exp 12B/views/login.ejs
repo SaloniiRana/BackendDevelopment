@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exp 12B - Login (Sessions & Cookies)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #222222;
+            padding: 30px;
+        }
+        body.dark {
+            background-color: #1e293b;
+            color: #f8fafc;
+        }
+        .box {
+            max-width: 450px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+        body.dark .box {
+            background-color: #334155;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 9px;
+            margin: 8px 0 14px 0;
+            border-radius: 4px;
+            border: 1px solid #bbb;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #1e3a5f;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .info {
+            font-size: 0.9em;
+            padding: 10px;
+            background: rgba(30, 58, 95, 0.15);
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        .error {
+            color: #dc2626;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="<%= theme %>">
+    <div class="box">
+        <h2>Experiment 12B: Sessions &amp; Cookies</h2>
+        
+        <div class="info">
+            <strong>Cookie Tracker:</strong> You have visited this login page <strong><%= visits %></strong> time(s).
+        </div>
+
+        <% if (error) { %>
+            <p class="error"><%= error %></p>
+        <% } %>
+
+        <!-- Session Login Form -->
+        <form action="/login" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your name" required>
+
+            <label for="role">Role:</label>
+            <select id="role" name="role">
+                <option value="Student">Student</option>
+                <option value="Lab Instructor">Lab Instructor</option>
+            </select>
+
+            <button type="submit">Start Session (Login)</button>
+        </form>
+
+        <!-- Cookie Theme Preference Form -->
+        <form action="/set-theme" method="POST">
+            <label for="theme">Theme Preference (Stored in Cookie):</label>
+            <select id="theme" name="theme" onchange="this.form.submit()">
+                <option value="light" <%= theme === 'light' ? 'selected' : '' %>>Light Theme</option>
+                <option value="dark" <%= theme === 'dark' ? 'selected' : '' %>>Dark Theme</option>
+            </select>
+        </form>
+
+        <a href="/clear-cookies" style="font-size: 0.85em; color: inherit;">Reset Browser Cookies</a>
+    </div>
+</body>
+</html>

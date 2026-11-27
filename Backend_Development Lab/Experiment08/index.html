@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 08 - JavaScript Event Handling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #222;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #1e3a5f;
+            margin-top: 0;
+        }
+        .section {
+            padding: 15px;
+            margin-bottom: 18px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+        input {
+            padding: 8px;
+            border: 1px solid #bbb;
+            border-radius: 4px;
+            width: 65%;
+        }
+        button {
+            padding: 8px 14px;
+            background-color: #1e3a5f;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #hoverBox {
+            padding: 20px;
+            background-color: #e2e8f0;
+            text-align: center;
+            border-radius: 6px;
+            margin-top: 10px;
+            transition: background-color 0.2s;
+        }
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Experiment 08: Event Handling &amp; Interactive UI</h1>
+        <p>Demonstrating <code>addEventListener</code>, keyboard events, mouse events, form submission, and event delegation.</p>
+
+        <!-- 1. Form Submit & Event Delegation -->
+        <div class="section">
+            <h3>1. Form Submit &amp; Event Delegation (Interactive Checklist)</h3>
+            <form id="taskForm">
+                <input type="text" id="taskInput" placeholder="Enter a lab task..." required>
+                <button type="submit">Add Task</button>
+            </form>
+            <ul id="taskList" style="list-style: none; padding: 0; margin-top: 12px;">
+                <li class="task-item">
+                    <span>Review DOM Event Bubbling</span>
+                    <button class="delete-btn" type="button">Delete</button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 2. Keyboard & Input Events -->
+        <div class="section">
+            <h3>2. Live Input &amp; Keyboard Events</h3>
+            <input type="text" id="liveInput" placeholder="Type anything here...">
+            <p>Character Count: <strong id="charCount">0</strong> | Last Key Pressed: <strong id="lastKey">None</strong></p>
+        </div>
+
+        <!-- 3. Mouse Events -->
+        <div class="section">
+            <h3>3. Mouse Events (mouseenter, mouseleave, dblclick)</h3>
+            <div id="hoverBox">Hover over me or double-click me!</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

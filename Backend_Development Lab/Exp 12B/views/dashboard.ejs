@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard - Active Session</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #222222;
+            padding: 30px;
+        }
+        body.dark {
+            background-color: #1e293b;
+            color: #f8fafc;
+        }
+        .card {
+            max-width: 550px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+        body.dark .card {
+            background-color: #334155;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #16a34a;
+            color: white;
+            border-radius: 4px;
+            font-size: 0.85em;
+        }
+        .logout-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 16px;
+            background-color: #dc2626;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="<%= theme %>">
+    <div class="card">
+        <h2>Welcome, <%= user.username %>! <span class="badge">Session Active</span></h2>
+        <p>Because HTTP is stateless, the server uses your <strong>Session ID</strong> cookie to remember you across page reloads.</p>
+
+        <ul>
+            <li><strong>Role:</strong> <%= user.role %></li>
+            <li><strong>Login Time:</strong> <%= user.loginTime %></li>
+            <li><strong>Session ID:</strong> <code><%= sessionID %></code></li>
+            <li><strong>Dashboard Reloads (Session State):</strong> <%= dashboardViews %></li>
+            <li><strong>Active Theme (Browser Cookie):</strong> <%= theme %></li>
+        </ul>
+
+        <form action="/set-theme" method="POST" style="margin-top: 15px;">
+            <label for="theme">Switch Cookie Theme: </label>
+            <select id="theme" name="theme" onchange="this.form.submit()">
+                <option value="light" <%= theme === 'light' ? 'selected' : '' %>>Light</option>
+                <option value="dark" <%= theme === 'dark' ? 'selected' : '' %>>Dark</option>
+            </select>
+        </form>
+
+        <a href="/logout" class="logout-btn">Destroy Session (Logout)</a>
+    </div>
+</body>
+</html>

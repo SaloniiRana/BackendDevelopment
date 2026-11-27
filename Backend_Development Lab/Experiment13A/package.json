@@ -1,0 +1,17 @@
+{
+  "name": "experiment-13a-express-mongoose",
+  "version": "1.0.0",
+  "description": "Experiment 13A: Express + Mongoose User Management System",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 05 - JavaScript Arrays, Objects & Functions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #222;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            margin: auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #1e3a5f;
+            margin-top: 0;
+        }
+        .form-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+        input {
+            padding: 8px;
+            border: 1px solid #bbb;
+            border-radius: 4px;
+            flex: 1;
+            min-width: 140px;
+        }
+        button {
+            padding: 8px 14px;
+            background-color: #1e3a5f;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button.secondary {
+            background-color: #475569;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #eef2f6;
+        }
+        .summary {
+            margin-top: 18px;
+            padding: 12px;
+            background-color: #f8fafc;
+            border-left: 4px solid #1e3a5f;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Experiment 05: JS Arrays, Objects &amp; Functions</h1>
+        <p>PBL Activity: Student Record &amp; Performance Data Management Utility</p>
+
+        <!-- Add Student Object Form -->
+        <form id="studentForm" class="form-row">
+            <input type="text" id="nameInput" placeholder="Student Name" required>
+            <input type="text" id="courseInput" placeholder="Course (e.g., B.Tech CSE)" required>
+            <input type="number" id="marksInput" placeholder="Marks (0-100)" min="0" max="100" required>
+            <button type="submit">Add Record</button>
+        </form>
+
+        <!-- Array & Function Operations -->
+        <div class="controls">
+            <button type="button" class="secondary" onclick="showAllStudents()">Show All</button>
+            <button type="button" class="secondary" onclick="filterTopScorers()">Filter Top Scorers (&ge; 75)</button>
+            <button type="button" class="secondary" onclick="sortByMarks()">Sort by Marks (High to Low)</button>
+            <button type="button" class="secondary" onclick="addGraceMarks()">Apply +5 Grace Marks (map)</button>
+        </div>
+
+        <!-- Output Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll No</th>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Marks</th>
+                    <th>Grade</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="studentTableBody"></tbody>
+        </table>
+
+        <!-- Summary Box -->
+        <div class="summary" id="summaryBox"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

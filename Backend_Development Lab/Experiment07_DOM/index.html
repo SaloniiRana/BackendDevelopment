@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 07 - ES6 & DOM Manipulation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #222;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #1e3a5f;
+            margin-top: 0;
+        }
+        .box {
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background-color: #fafafa;
+        }
+        .highlight {
+            background-color: #dbeafe;
+            border-left: 4px solid #1e3a5f;
+            font-weight: bold;
+        }
+        button {
+            padding: 8px 14px;
+            margin: 4px 4px 4px 0;
+            background-color: #1e3a5f;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        ul {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="mainTitle">Experiment 07: ES6 Features &amp; DOM Manipulation</h1>
+        <p class="subtitle">Demonstrating modern JavaScript syntax and dynamic DOM tree updates.</p>
+
+        <!-- Section 1: ES6 Output -->
+        <div class="box">
+            <h3>Part A: ES6 Features Demo</h3>
+            <button onclick="runES6Demo()">Run ES6 Features Demo</button>
+            <div id="es6Output" style="margin-top: 10px;">Click the button to test ES6 features.</div>
+        </div>
+
+        <!-- Section 2: DOM Selection & Content/Style Modification -->
+        <div class="box" id="domBox">
+            <h3>Part B: Modifying DOM Content, Styles &amp; Attributes</h3>
+            <p id="demoText">This paragraph will be updated dynamically using DOM methods.</p>
+            <a id="docLink" href="https://mozilla.org" target="_blank">MDN Web Docs</a>
+            <br><br>
+            <button onclick="updateContent()">Change Text &amp; Link</button>
+            <button onclick="toggleHighlight()">Toggle CSS Class</button>
+        </div>
+
+        <!-- Section 3: Creating & Removing DOM Nodes -->
+        <div class="box">
+            <h3>Part C: Creating &amp; Removing DOM Elements</h3>
+            <button onclick="addNode()">Add List Item</button>
+            <button onclick="removeLastNode()">Remove Last Item</button>
+            <ul id="nodeList">
+                <li>Initial DOM Node 1</li>
+                <li>Initial DOM Node 2</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
